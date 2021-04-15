@@ -2,17 +2,31 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
-*/
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => '/api'], function () use ($router) {
+    $router->group(['prefix' => '/flux-total-nat'], function () use ($router) {
+        $router->get('/', 'FluxTotalNatController@all');
+
+        $router->group(['prefix' => '{fluxTotalNatID}'], function () use ($router) {
+            $router->get('/', 'FluxTotalNatController@get');
+        });
+    });
+
+    $router->group(['prefix' => '/allocations-vs-rdv'], function () use ($router) {
+        $router->get('/', 'AllocationsVsRdvController@all');
+
+        $router->group(['prefix' => '{allocationVsRdvID}'], function () use ($router) {
+            $router->get('/', 'AllocationsVsRdvController@get');
+        });
+    });
+
+    $router->group(['prefix' => '/stocks-plateformes'], function () use ($router) {
+        $router->get('/', 'StocksPlateformesController@all');
+
+        $router->group(['prefix' => '{stockPlateformeID}'], function () use ($router) {
+            $router->get('/', 'StocksPlateformesController@get');
+        });
+    });
 });
+
+$router->get('/', function () { echo 'Coucou c\'est nous';});
