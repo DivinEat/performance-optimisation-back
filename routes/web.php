@@ -2,7 +2,6 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-
 $router->group(['prefix' => '/api'], function () use ($router) {
     $router->group(['prefix' => '/flux-total-nat'], function () use ($router) {
         $router->get('/', 'FluxTotalNatController@all');

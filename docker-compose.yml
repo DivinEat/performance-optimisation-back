@@ -9,7 +9,7 @@ services:
             - MONGO_INITDB_DATABASE=docker
             - MONGO_INITDB_ROOT_USERNAME=user
             - MONGO_INITDB_ROOT_PASSWORD=password
-    app:
+    app-back:
       build:
         context: ./docker
       image: 'laravelapp'
