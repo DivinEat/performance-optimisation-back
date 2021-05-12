@@ -36,7 +36,7 @@ class AllocationsVsRdvController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validated = $this->validate($request, [
             'id_centre' => 'required|numeric',
             'date_debut_semaine' => 'required',
             'code_region' => 'required|numeric',
@@ -61,7 +61,7 @@ class AllocationsVsRdvController extends Controller
      */
     public function update(Request $request, string $allocationVsRdvID)
     {
-        $validated = $request->validate([
+        $validated = $this->validate($request, [
             'id_centre' => 'sometimes|numeric',
             'date_debut_semaine' => 'sometimes',
             'code_region' => 'sometimes|numeric',

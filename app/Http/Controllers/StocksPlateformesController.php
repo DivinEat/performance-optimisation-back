@@ -34,7 +34,7 @@ class StocksPlateformesController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validated = $this->validate($request, [
             'nb_UCD' => 'required|numeric',
             'nb_doses' => 'required|numeric',
             'type_de_vaccin' => 'required|string',
@@ -52,7 +52,7 @@ class StocksPlateformesController extends Controller
      */
     public function update(Request $request, string $stockPlateformeID)
     {
-        $validated = $request->validate([
+        $validated = $this->validate($request, [
             'nb_UCD' => 'sometimes|numeric',
             'nb_doses' => 'sometimes|numeric',
             'type_de_vaccin' => 'sometimes|string',
