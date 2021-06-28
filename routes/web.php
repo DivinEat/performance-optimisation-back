@@ -3,6 +3,8 @@
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 $router->group(['prefix' => '/api'], function () use ($router) {
+    $router->get('/all', 'AllController@all');
+
     $router->group(['prefix' => '/flux-total-nat'], function () use ($router) {
         $router->get('/', 'FluxTotalNatController@all');
         $router->post('/', 'FluxTotalNatController@store');
@@ -37,4 +39,6 @@ $router->group(['prefix' => '/api'], function () use ($router) {
     });
 });
 
-$router->get('/', function () { echo 'Coucou c\'est nous';});
+$router->get('/', function () {
+    echo 'Coucou c\'est nous';
+});
