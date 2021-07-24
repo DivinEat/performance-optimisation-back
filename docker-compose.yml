@@ -11,12 +11,12 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
   app-back:
     build:
-      context: ./docker
+      context: ./server/docker
     image: "laravelapp"
     ports:
       - 8000:80
     volumes:
-      - ./:/var/www/html
+      - ./server/:/var/www/html
     networks:
       - default
 
@@ -31,6 +31,17 @@ services:
       BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
       BLACKFIRE_CLIENT_ID: $BLACKFIRE_CLIENT_ID
       BLACKFIRE_CLIENT_TOKEN: $BLACKFIRE_CLIENT_TOKEN
+
+  app-front:
+    image: node:alpine3.10
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/home/node/app
+    working_dir: /home/node/app
+    command: sh -c "yarn install --no-update-notifier; yarn start --no-update-notifier"
+    networks:
+      - default
 
 networks:
   default:
