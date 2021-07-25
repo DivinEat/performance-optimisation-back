@@ -7,9 +7,9 @@ function Header() {
             <h1>TEST DE PERF</h1>
 
             <div>
-                <Link to="/Home">Home</Link>
-                <Link to="/Login">Login</Link>
-                <Link to="/">X</Link>
+                <Link to="/">Home</Link>
+                <Link to="/all">All</Link>
+                <Link to="/login">Login</Link>
             </div>
         </nav>
     );

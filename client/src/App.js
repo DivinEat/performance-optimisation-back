@@ -13,7 +13,6 @@ function App() {
               <Header/>
               <Home/>
             </Route>
-
             <Route path="/all" exact>
               <Header/>
             </Route>

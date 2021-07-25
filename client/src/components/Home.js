@@ -6,12 +6,11 @@ export default function Home() {
   useEffect(() => {
     const headers = new Headers({
       "Access-Control-Allow-Origin": "*",
-      // "Content-Type": "application/json"
     });
 
     fetch("http://localhost:8000/api/allocations-vs-rdv/", {
       method: "GET",
-      //   headers: headers,
+        // headers: headers,
     })
       .then((res) => res.json())
       .then((result) => {
