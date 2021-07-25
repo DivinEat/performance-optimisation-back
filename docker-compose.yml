@@ -17,8 +17,6 @@ services:
       - 8000:80
     volumes:
       - ./server/:/var/www/html
-    networks:
-      - default
 
   blackfire:
     image: blackfire/blackfire:2
@@ -39,11 +37,3 @@ services:
       - ./client:/home/node/app
     working_dir: /home/node/app
     command: sh -c "yarn install --no-update-notifier; yarn start --no-update-notifier"
-    networks:
-      - default
-    links:
-      - app-back
-
-networks:
-  default:
-    name: front_default
