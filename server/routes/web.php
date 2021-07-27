@@ -4,6 +4,7 @@
 
 $router->group(['prefix' => '/api'], function () use ($router) {
     $router->get('/all', 'AllController@all');
+    $router->get('/slow', 'AllController@slow');
 
     $router->group(['prefix' => '/flux-total-nat'], function () use ($router) {
         $router->get('/', 'FluxTotalNatController@all');

@@ -20,4 +20,19 @@ class AllController extends Controller
             'stocksPlateformes' => StocksPlateformes::all()
         ]);
     }
+
+
+    /**
+     * @return JsonResponse
+     */
+    public function slow(): JsonResponse
+    {
+        sleep(10);
+
+        return response()->json([
+            'allocationsVsRdv' => AllocationsVsRdv::all(),
+            'fluxTotalNat' => FluxTotalNat::all(),
+            'stocksPlateformes' => StocksPlateformes::all()
+        ]);
+    }
 }
