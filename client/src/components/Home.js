@@ -10,7 +10,7 @@ export default function Home() {
 
     fetch("http://localhost:8000/api/allocations-vs-rdv/", {
       method: "GET",
-        // headers: headers,
+        headers: headers,
     })
       .then((res) => res.json())
       .then((result) => {

@@ -11,6 +11,14 @@
 |
 */
 
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+    header('Access-Control-Allow-Headers: *');
+    http_response_code(200);
+    die();
+}
+
 $app = require __DIR__.'/../bootstrap/app.php';
 
 /*
