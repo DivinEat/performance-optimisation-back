@@ -40,6 +40,4 @@ $router->group(['prefix' => '/api'], function () use ($router) {
     });
 });
 
-$router->get('/', function () {
-    echo 'Coucou c\'est nous';
-});
+$router->get('/', 'DefaultController@index');
