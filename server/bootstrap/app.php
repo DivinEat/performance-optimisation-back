@@ -71,12 +71,12 @@ $app->configure('app');
 */
 
 $app->middleware([
-    //     App\Http\Middleware\ExampleMiddleware::class
     Fruitcake\Cors\HandleCors::class
 ]);
 
  $app->routeMiddleware([
-     'auth' => App\Http\Middleware\Authenticate::class,
+     'admin' => App\Http\Middleware\Admin::class,
+     'consul' => App\Http\Middleware\Consultant::class
  ]);
 
 /*
