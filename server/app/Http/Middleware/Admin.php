@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
-class ExampleMiddleware
+class Admin extends Authenticate
 {
     /**
      * Handle an incoming request.
@@ -13,8 +14,11 @@ class ExampleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
+        if ($this->getRole() !== 'administrateur')
+            abort(401);
+
         return $next($request);
     }
 }

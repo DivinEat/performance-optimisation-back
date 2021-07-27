@@ -40,6 +40,8 @@ $router->group(['prefix' => '/api'], function () use ($router) {
     });
 });
 
+$router->post('/auth', 'AuthController@auth');
+
 $router->get('/', function () {
     echo 'Coucou c\'est nous';
 });

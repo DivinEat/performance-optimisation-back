@@ -2,17 +2,18 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
+use Illuminate\Http\Request;
 
-class Authenticate
+abstract class Authenticate
 {
-    public function handle($request, Closure $next)
+    protected function getRole(Request $request): ?string
     {
-        $bearer = json_decode(file_get_contents('../../../auth.di'), 1);
-        
-        if ($request->bearerToken() === null || ! isset($bearer[$request->bearerToken()]))
-            return response('Unauthorized.', 401);
+        $path = dirname(dirname(dirname(__DIR__))) . '/auth.di';
+        $bearer = json_decode(file_get_contents($path), 1);
 
-        return $next($request);
+        if ($request->bearerToken() === null || ! isset($bearer[$request->bearerToken()]))
+            return null;
+
+        return $bearer[$request->bearerToken()];
     }
 }
