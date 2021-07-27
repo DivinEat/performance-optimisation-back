@@ -26,3 +26,14 @@ services:
       - ./client:/home/node/app
     working_dir: /home/node/app
     command: sh -c "yarn install --no-update-notifier; yarn start --no-update-notifier"
+
+  blackfire:
+    image: blackfire/blackfire:2
+    ports:
+      - 8307:8307
+    environment:
+      BLACKFIRE_LOG_LEVEL: 4
+      BLACKFIRE_SERVER_ID: $BLACKFIRE_SERVER_ID
+      BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
+      BLACKFIRE_CLIENT_ID: $BLACKFIRE_CLIENT_ID
+      BLACKFIRE_CLIENT_TOKEN: $BLACKFIRE_CLIENT_TOKEN
