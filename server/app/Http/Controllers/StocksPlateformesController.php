@@ -24,7 +24,9 @@ class StocksPlateformesController extends Controller
      */
     public function all(): JsonResponse
     {
-        return response()->json(StocksPlateformes::all());
+        return response()->json([
+            'stocksPlateformes' => StocksPlateformes::all()
+        ]);
     }
 
     /**
@@ -60,7 +62,7 @@ class StocksPlateformesController extends Controller
         ]);
 
         $stocksPlateforme = StocksPlateformes::find($stockPlateformeID);
-        
+
         if($stocksPlateforme === null) {
             return abort(404);
         }

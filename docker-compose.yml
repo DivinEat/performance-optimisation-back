@@ -18,6 +18,15 @@ services:
     volumes:
       - ./server/:/var/www/html
 
+  app-front:
+    image: node:alpine3.10
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/home/node/app
+    working_dir: /home/node/app
+    command: sh -c "yarn install --no-update-notifier; yarn start --no-update-notifier"
+
   blackfire:
     image: blackfire/blackfire:2
     ports:
@@ -28,12 +37,3 @@ services:
       BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
       BLACKFIRE_CLIENT_ID: $BLACKFIRE_CLIENT_ID
       BLACKFIRE_CLIENT_TOKEN: $BLACKFIRE_CLIENT_TOKEN
-
-  app-front:
-    image: node:alpine3.10
-    ports:
-      - 3000:3000
-    volumes:
-      - ./client:/home/node/app
-    working_dir: /home/node/app
-    command: sh -c "yarn install --no-update-notifier; yarn start --no-update-notifier"

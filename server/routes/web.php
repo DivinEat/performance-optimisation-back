@@ -42,6 +42,8 @@ $router->group(['prefix' => '/api'], function () use ($router) {
 
 $router->post('/auth', 'AuthController@auth');
 
-$router->get('/', function () {
-    echo 'Coucou c\'est nous';
+$router->group(['prefix' => '/front'], function () use ($router) {
+    $router->get('/', 'DefaultController@index');
+    $router->get('/all', 'DefaultController@all');
+    $router->get('/slow', 'DefaultController@slow');
 });

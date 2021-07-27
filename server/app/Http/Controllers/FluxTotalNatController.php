@@ -62,7 +62,7 @@ class FluxTotalNatController extends Controller
         ]);
 
         $fluxTotalNat = FluxTotalNat::find($fluxTotalNatID);
-        
+
         if($fluxTotalNat === null) {
             return abort(404);
         }
