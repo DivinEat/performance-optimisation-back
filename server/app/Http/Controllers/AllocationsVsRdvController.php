@@ -76,7 +76,7 @@ class AllocationsVsRdvController extends Controller
         ]);
 
         $allocationVsRdv = AllocationsVsRdv::find($allocationVsRdvID);
-        
+
         if($allocationVsRdv === null) {
             return abort(404);
         }

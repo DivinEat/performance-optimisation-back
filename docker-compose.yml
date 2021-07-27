@@ -18,17 +18,6 @@ services:
     volumes:
       - ./server/:/var/www/html
 
-  blackfire:
-    image: blackfire/blackfire:2
-    ports:
-      - 8307:8307
-    environment:
-      BLACKFIRE_LOG_LEVEL: 4
-      BLACKFIRE_SERVER_ID: $BLACKFIRE_SERVER_ID
-      BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
-      BLACKFIRE_CLIENT_ID: $BLACKFIRE_CLIENT_ID
-      BLACKFIRE_CLIENT_TOKEN: $BLACKFIRE_CLIENT_TOKEN
-
   app-front:
     image: node:alpine3.10
     ports:
