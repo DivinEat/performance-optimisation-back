@@ -40,4 +40,8 @@ $router->group(['prefix' => '/api'], function () use ($router) {
     });
 });
 
-$router->get('/', 'DefaultController@index');
+$router->group(['prefix' => '/front'], function () use ($router) {
+    $router->get('/', 'DefaultController@index');
+    $router->get('/all', 'DefaultController@all');
+    $router->get('/slow', 'DefaultController@slow');
+});
