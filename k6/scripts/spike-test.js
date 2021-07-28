@@ -3,12 +3,7 @@ import { sleep } from 'k6';
 
 export let options = {
     stages: [
-        { duration: '10s', target: 100 }, // below normal load
-        { duration: '1m', target: 100 },
-        { duration: '10s', target: 1400 }, // spike to 1400 users
-        { duration: '3m', target: 1400 }, // stay at 1400 for 3 minutes
-        { duration: '10s', target: 100 }, // scale down. Recovery stage.
-        { duration: '3m', target: 100 },
+        { duration: '10s', target: 500 },
         { duration: '10s', target: 0 },
     ],
 };
@@ -45,18 +40,6 @@ export default function () {
                 nombre_ucd: "6",
                 doses_allouees: "36",
                 rdv_pris: "64"
-            },
-        ],
-        [
-            'GET',
-            `${BASE_URL}/api/stocks-plateformes/61004528a73366608166caa2`,
-            null,
-            {
-                _id: "61004528a73366608166caa2",
-                nb_UCD: "72847",
-                nb_doses: "364235",
-                type_de_vaccin: "Pfizer",
-                date: "22/01/2021"
             },
         ],
     ]);

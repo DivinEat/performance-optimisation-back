@@ -1,4 +1,5 @@
 import http from 'k6/http';
+import encoding from 'k6/encoding';
 import { check, sleep } from 'k6';
 
 export let options = {
@@ -11,29 +12,38 @@ export let options = {
 };
 
 const BASE_URL = 'http://localhost:8000';
-// const USERNAME = 'TestUser';
-// const PASSWORD = 'SuperCroc2020';
+const USERNAME = 'administrateur';
+const PASSWORD = 'SuperCoco345';
 
 export default () => {
-    // let loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
-    //     username: USERNAME,
-    //     password: PASSWORD,
-    // });
-
+    // const credentials = `${USERNAME}:${PASSWORD}`;
+    //
+    // const encodedCredentials = encoding.b64encode(credentials);
+    // const options = {
+    //     headers: {
+    //         Authorization: `Basic ${encodedCredentials}`,
+    //     },
+    // };
+    //
+    // let loginRes = http.get(
+    //     `${BASE_URL}/auth`,
+    //     options,
+    // );
+    //
     // check(loginRes, {
-    //     'logged in successfully': (resp) => resp.json('access') !== '',
+    //     'status is 200': (r) => r.status === 200,
     // });
     //
     // let authHeaders = {
     //     headers: {
-    //         Authorization: `Bearer ${loginRes.json('access')}`,
+    //         Authorization: `Bearer ${loginRes.body}`,
     //     },
     // };
 
-    // let myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
-    let myObjects = http.get(`${BASE_URL}/api/allocations-vs-rdv`).json();
-    check(myObjects, { "allocationsVsRdv" : (obj) => {
-        return obj.allocationsVsRdv.length !== 0;
+    // let myObjects = http.get(`${BASE_URL}/api/stocks-plateformes`, authHeaders).json();
+    let myObjects = http.get(`${BASE_URL}/api/flux-total-nat`).json();
+    check(myObjects, { "fluxTotalNat" : (obj) => {
+        return obj.fluxTotalNat.length !== 0;
     }});
 
     sleep(1);

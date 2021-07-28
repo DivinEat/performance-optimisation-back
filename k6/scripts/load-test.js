@@ -14,8 +14,8 @@ export let options = {
 };
 
 const BASE_URL = 'http://localhost:8000';
-// const USERNAME = 'TestUser';
-// const PASSWORD = 'SuperCroc2020';
+const USERNAME = 'SuperCoco345';
+const PASSWORD = 'SuperCroc2020';
 
 export default () => {
     // let loginRes = http.post(`${BASE_URL}/auth/token/login/`, {
@@ -34,9 +34,9 @@ export default () => {
     // };
 
     // let myObjects = http.get(`${BASE_URL}/my/crocodiles/`, authHeaders).json();
-    let myObjects = http.get(`${BASE_URL}/api/stocks-plateformes`).json();
-    check(myObjects, { "stocksPlateformes" : (obj) => {
-        return obj.stocksPlateformes.length !== 0;
+    let myObjects = http.get(`${BASE_URL}/api/flux-total-nat`).json();
+    check(myObjects, { "fluxTotalNat" : (obj) => {
+        return obj.fluxTotalNat.length === 0;
     }});
 
     sleep(1);

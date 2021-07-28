@@ -16,7 +16,7 @@ class Admin extends Authenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->getRole() !== 'administrateur')
+        if ($this->getRole($request) !== 'administrateur')
             abort(401);
 
         return $next($request);

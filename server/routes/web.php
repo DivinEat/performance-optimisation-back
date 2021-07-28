@@ -28,7 +28,7 @@ $router->group(['prefix' => '/api'], function () use ($router) {
         });
     });
 
-    $router->group(['prefix' => '/stocks-plateformes'], function () use ($router) {
+    $router->group(['prefix' => '/stocks-plateformes', 'middleware' => 'admin'], function () use ($router) {
         $router->get('/', 'StocksPlateformesController@all');
         $router->post('/', 'StocksPlateformesController@store');
 
@@ -40,7 +40,7 @@ $router->group(['prefix' => '/api'], function () use ($router) {
     });
 });
 
-$router->post('/auth', 'AuthController@auth');
+$router->get('/auth', 'AuthController@auth');
 
 $router->group(['prefix' => '/front'], function () use ($router) {
     $router->get('/', 'DefaultController@index');

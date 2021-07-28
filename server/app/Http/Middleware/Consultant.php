@@ -16,7 +16,7 @@ class Consultant extends Authenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->getRole() === null)
+        if ($this->getRole($request) === null)
             abort(401);
 
         return $next($request);
